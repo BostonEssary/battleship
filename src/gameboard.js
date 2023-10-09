@@ -56,7 +56,7 @@ class Gameboard{
        return this.shipCords[ship.name]
     }
 
-    
+
     
     placeShip(ship, isVertical, xCord, yCord){
         if(this.checkLegalPlacement(ship, isVertical, xCord, yCord) === false){
@@ -84,6 +84,7 @@ class Gameboard{
         else if(this.board[yCord][xCord] === 'X'){
 
             this.board[yCord][xCord] = 'H'
+            
 
         }
     }

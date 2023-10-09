@@ -65,6 +65,22 @@ describe("Gameboard", () => {
         let gameboard = new Gameboard()
         expect(gameboard.placeShip(gameboard.carrier, false, 6, 0)).toBe('that is not a legal placement')
     })
+
+    test('Recieve attack, which hits a patrol boat on 0,0 0,1. Marks hit on board', () => {
+        let gameboard = new Gameboard()
+        gameboard.placeShip(gameboard.patrolBoat, false, 0, 0)
+        gameboard.recieveAttack(0, 0)
+        expect(gameboard.board).toStrictEqual([['H','X','','','','','','','',''],
+        ['','','','','','','','','',''],
+        ['','','','','','','','','',''],
+        ['','','','','','','','','',''],
+        ['','','','','','','','','',''],
+        ['','','','','','','','','',''],
+        ['','','','','','','','','',''],
+        ['','','','','','','','','',''],
+        ['','','','','','','','','',''],
+        ['','','','','','','','','','']])
+    })
     
     
 })
