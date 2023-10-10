@@ -24,13 +24,7 @@ class Gameboard{
    
 
     ships = [this.carrier, this.battleship, this.destroyer, this.submarine, this.patrolBoat]
-    shipCords = {
-        "Carrier" : [],
-        "Battleship": [],
-        "Destroyer": [],
-        "Submarine":[],
-        "Patrol Boat": []
-    }
+ 
 
     constructor(){
 
@@ -48,14 +42,6 @@ class Gameboard{
         }
     }
 
-    setShipCords(ship, yCord, xCord){
-        let arr = [yCord, xCord]
-        this.shipCords[ship.name].push(arr)
-    }
-
-    getShipCords(ship){
-       return this.shipCords[ship.name]
-    }
 
 
     

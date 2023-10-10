@@ -55,12 +55,6 @@ describe("Gameboard", () => {
         expect(gameboard.placeShip(gameboard.patrolBoat, false, 9, 0)).toBe('that is not a legal placement')
     })
 
-    test('Return all ship coordinates as 2d arr', () => {
-        let gameboard = new Gameboard()
-        gameboard.placeShip(gameboard.patrolBoat, false, 0, 0)
-        expect(gameboard.getShipCords(gameboard.patrolBoat)).toStrictEqual([[0,0], [0,1]])
-        
-    })
 
     test('Place a carrier ship in a illegal spot. Should return a string stating that the move was not legal', () =>{
         let gameboard = new Gameboard()
