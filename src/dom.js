@@ -31,7 +31,9 @@ function drawEnemyBoard(player) {
       const spot = document.createElement('div');
       spot.classList.add('spot');
       spot.classList.add('enemy-spot');
-      spot.innerText = player.gameboard.board[i][j];
+      if (player.gameboard.board[i][j] === 'X') {
+        spot.innerText = '';
+      } else { spot.innerText = player.gameboard.board[i][j]; }
       spot.dataset.yCord = i;
       spot.dataset.xCord = j;
       spot.addEventListener('click', () => {
