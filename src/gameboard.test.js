@@ -1,3 +1,4 @@
+import { experiments } from 'webpack'
 import Gameboard from './gameboard'
 
 describe("Gameboard", () => {
@@ -80,6 +81,12 @@ describe("Gameboard", () => {
         ['','','','','','','','','',''],
         ['','','','','','','','','',''],
         ['','','','','','','','','','']])
+    })
+
+    test('place patrol boat on 0,0 0,1 and verify coords were placed into the patrolBoat object', () => {
+        let gameboard = new Gameboard();
+        gameboard.placeShip(gameboard.patrolBoat, false, 0, 0)
+        expect(gameboard.patrolBoat.coords).toStrictEqual([[0,0],[0,1]])
     })
     
     

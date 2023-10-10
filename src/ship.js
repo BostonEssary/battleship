@@ -1,6 +1,7 @@
 class Ship {
     hits = 0
     sunk = false
+    coords = []
 
     constructor(length, name) {
         this.length = length
@@ -15,6 +16,11 @@ class Ship {
         if (this.hits === this.length){
             this.sunk = true
         }
+    }
+
+    setCords(xCord, yCord){
+        let arr = [yCord, xCord]
+        this.coords.push(arr)
     }
 
 

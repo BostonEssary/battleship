@@ -49,7 +49,8 @@ class Gameboard{
     }
 
     setShipCords(ship, yCord, xCord){
-        this.shipCords[ship.name].push([yCord, xCord])
+        let arr = [yCord, xCord]
+        this.shipCords[ship.name].push(arr)
     }
 
     getShipCords(ship){
@@ -66,11 +67,12 @@ class Gameboard{
             for (let index = 0; index < ship.length; index++) {
                 if(isVertical === true){
                     this.board[yCord+index][xCord] = 'X'
-                    this.setShipCords(ship,yCord+index, xCord)
+                    ship.setCords(xCord, yCord+index)
                 }
                 else if (isVertical === false){
                     this.board[yCord][xCord+index] = 'X'
-                    this.setShipCords(ship,yCord, xCord+index)
+                    ship.setCords(xCord+index, yCord)
+                   
                 }
             }
             return this.board
