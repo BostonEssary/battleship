@@ -1,0 +1,6 @@
+else if (player.gameboard.board[i][j] === 'S') {
+        const skull = document.createElement('img');
+        skull.src = '../assets/icons/skull.svg';
+        skull.classList.add('icon');
+        spot.append(skull);
+      }

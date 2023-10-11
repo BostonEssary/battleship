@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import Ship from './ship';
 
 class Gameboard {
@@ -24,10 +25,6 @@ class Gameboard {
 
   ships = [this.carrier, this.battleship, this.destroyer, this.submarine, this.patrolBoat];
 
-  constructor() {
-
-  }
-
   checkLegalPlacement(ship, isVertical, xCord, yCord) {
     if (isVertical === true && yCord + ship.length <= 10) {
       return true;
@@ -39,12 +36,13 @@ class Gameboard {
     return false;
   }
 
+  // eslint-disable-next-line consistent-return
   placeShip(ship, isVertical, xCord, yCord) {
     if (this.checkLegalPlacement(ship, isVertical, xCord, yCord) === false) {
       return 'that is not a legal placement';
     }
 
-    for (let index = 0; index < ship.length; index++) {
+    for (let index = 0; index < ship.length; index += 1) {
       if (isVertical === true) {
         this.board[yCord + index][xCord] = 'X';
         ship.setCords(xCord, yCord + index);
@@ -55,6 +53,7 @@ class Gameboard {
     }
   }
 
+  // eslint-disable-next-line consistent-return
   getShipAtCoords(xCord, yCord) {
     const attack = [yCord, xCord];
     let foundCoord = false;
@@ -72,17 +71,29 @@ class Gameboard {
     }
   }
 
+  sinkShip(ship) {
+    if (ship.sunk === true) {
+      ship.coords.forEach((coord) => {
+        this.board[coord[0]][coord[1]] = 'S';
+      });
+    }
+  }
+
   recieveAttack(xCord, yCord) {
+    let ship;
     if (this.board[yCord][xCord] === '') {
       this.board[yCord][xCord] = 'M';
     } else if (this.board[yCord][xCord] === 'X') {
-      const ship = this.getShipAtCoords(xCord, yCord);
+      ship = this.getShipAtCoords(xCord, yCord);
       this.board[yCord][xCord] = 'H';
       ship.hit();
     }
-    this.ships.forEach((ship) => {
-      ship.isSunk();
+    this.ships.forEach((currentShip) => {
+      currentShip.isSunk();
     });
+    if (ship !== undefined) {
+      this.sinkShip(ship);
+    }
   }
 
   checkAllShipsAreSunk() {

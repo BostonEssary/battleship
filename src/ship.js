@@ -1,29 +1,29 @@
 class Ship {
-    hits = 0
-    sunk = false
-    coords = []
+  hits = 0;
 
-    constructor(length, name) {
-        this.length = length
-        this.name = name
+  sunk = false;
+
+  coords = [];
+
+  constructor(length, name) {
+    this.length = length;
+    this.name = name;
+  }
+
+  hit() {
+    this.hits += 1;
+  }
+
+  isSunk() {
+    if (this.hits === this.length) {
+      this.sunk = true;
     }
+  }
 
-    hit() {
-        this.hits = this.hits + 1
-    }
-
-    isSunk(){
-        if (this.hits === this.length){
-            this.sunk = true
-        }
-    }
-
-    setCords(xCord, yCord){
-        let arr = [yCord, xCord]
-        this.coords.push(arr)
-    }
-
-
+  setCords(xCord, yCord) {
+    const arr = [yCord, xCord];
+    this.coords.push(arr);
+  }
 }
 
-export default Ship
+export default Ship;
