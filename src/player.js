@@ -29,6 +29,25 @@ class Player {
       }
     }
   }
+
+  computerPlaceShips() {
+    this.gameboard.ships.forEach((ship) => {
+      const verticalShip = Math.floor(Math.random() * 2);
+      if (verticalShip === 0) {
+        const xCoord = Math.floor(Math.random() * (10 - ship.length));
+        const yCoord = Math.floor(Math.random() * 10);
+
+        this.gameboard.placeShip(ship, false, xCoord, yCoord);
+        console.log(this.gameboard.placeShip(ship, false, xCoord, yCoord));
+      } else {
+        const xCoord = Math.floor(Math.random() * 10);
+        const yCoord = Math.floor(Math.random() * (10 - ship.length));
+        console.log(ship);
+        console.log([xCoord, yCoord]);
+        this.gameboard.placeShip(ship, true, xCoord, yCoord);
+      }
+    });
+  }
 }
 
 export default Player;

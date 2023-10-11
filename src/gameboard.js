@@ -36,9 +36,31 @@ class Gameboard {
     return false;
   }
 
+  checkSpotsTaken(ship, isVertical, xCord, yCord) {
+    let spotTaken = false;
+    if (isVertical) {
+      for (let index = 0; index < ship.length; index += 1) {
+        if (this.board[yCord + index][xCord] !== '') {
+          spotTaken = true;
+        }
+      }
+    } else if (!isVertical) {
+      for (let index = 0; index < ship.length; index += 1) {
+        if (this.board[yCord][xCord + index] !== '') {
+          spotTaken = true;
+        }
+      }
+    }
+
+    return spotTaken;
+  }
+
   // eslint-disable-next-line consistent-return
   placeShip(ship, isVertical, xCord, yCord) {
     if (this.checkLegalPlacement(ship, isVertical, xCord, yCord) === false) {
+      return 'that is not a legal placement';
+    }
+    if (this.checkSpotsTaken(ship, isVertical, xCord, yCord) === true) {
       return 'that is not a legal placement';
     }
 
